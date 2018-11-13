@@ -1,0 +1,24 @@
+---
+title: "genGraph_China"
+#author: "Kanokwan"
+#date: "10/24/2018"
+#output: html_document
+#---
+#```{r}
+#China
+gtd = read.csv("gtd_China.csv", header = T, sep=",")
+
+#select only the column we need to perform graph
+gtdChina  = gtd[ ,c(-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20)]
+
+#transform data to be adjacency matrix
+myAdMatrix = get.adjacency(graph.edgelist(as.matrix(gtdChina), directed=T))
+
+#transform adjacency matrix to the graph object
+gtdGraphChina = graph.adjacency(myAdMatrix, mode = "undirected")
+
+
+#plot the graph
+plot(gtdGraphChina)
+#```
+
